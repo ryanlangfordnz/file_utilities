@@ -34,18 +34,18 @@ def hasher(filename):
 
 
 file_hashes = {x: hasher(x) for x in files}
-hashes = Counter(file_hashes.values())
+hash_counter = Counter(file_hashes.values())
 
 # early out if folder is duplicate free
-if max(hashes.values()) == 1:
+if max(hash_counter.values()) == 1:
     print("Folder is duplicate free")
     exit(1)
 
 
 # loop through and get rid of extra files
 for file, hash in file_hashes.items():
-    if hashes[hash] > 1:
-        hashes[hash] -= 1
+    if hash_counter[hash] > 1:
+        hash_counter[hash] -= 1
         os.remove(file_path + "\\" + file)
 
 print("Folder is now duplicate free")
