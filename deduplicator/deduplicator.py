@@ -12,21 +12,23 @@ parser.add_argument("-p", "--path", help="Path")
 
 args = parser.parse_args()
 
+
 if not args.path:
     print("Please enter a path using the -p flag")
-    exit(1)
+    raise SystemExit
 
 file_path = args.path
 
 # check that the path is valid and not a file
 if os.path.exists(file_path) == False or os.path.isdir(file_path) == False:
     print("Not a valid directory path sorry")
-    exit(1)
+    raise SystemExit(1)
 
 # get a list of everything at the path
 objects = os.listdir(file_path)
+
 # pare it down to just the files
-files = list(filter(lambda x: os.path.isfile(x), objects))
+files = list(filter(lambda x: os.path.isfile(file_path + "\\" + x), objects))
 
 # Hashing the files to make sure they are unique or duplicated
 BLOCK_SIZE = 65536  # The size of each read from the file
@@ -48,10 +50,11 @@ def hasher(filename):
 file_hashes = {x: hasher(x) for x in files}
 hash_counter = Counter(file_hashes.values())
 
+
 # early out if folder is duplicate free
 if max(hash_counter.values()) == 1:
     print("Folder is duplicate free")
-    exit(1)
+    raise SystemExit(1)
 
 
 # loop through and get rid of extra files
