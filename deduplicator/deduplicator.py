@@ -2,9 +2,21 @@ import sys
 import os
 import hashlib
 from collections import Counter
+import argparse
 
-# [0] is the filename, index 1 is the first argument
-file_path = sys.argv[1]
+
+# set up parser for input
+parser = argparse.ArgumentParser()
+
+parser.add_argument("-p", "--path", help="Path")
+
+args = parser.parse_args()
+
+if not args.path:
+    print("Please enter a path using the -p flag")
+    exit(1)
+
+file_path = args.path
 
 # check that the path is valid and not a file
 if os.path.exists(file_path) == False or os.path.isdir(file_path) == False:
