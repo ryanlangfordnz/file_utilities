@@ -7,9 +7,8 @@ When specifying any path, use the -p flag.
 ## Deduplicator
 
 Run from the command line with a file path as an argument, will leave only one copy of each file.
-Uses a hash of the file contents, so differently named files with identical contents will be removed
-
-Example, assuming you are in the directory containing deduplicator.py:
+Uses a hash of the file contents, so differently named files with identical contents will be removed.  
+Example:
 
 ```
 $ D:\python\file_utilities> python deduplicator -p *path to folder I want to clean up*
@@ -19,14 +18,14 @@ $ D:\python\file_utilities> python deduplicator -p *path to folder I want to cle
 
 Run from the command line with a file path as an argument, and an additional flag to specify the mode.
 
--a: All files mode, all files at the location specified by the -p flag will be renamed to the argument given in the -a flag, keeping their file extensions.
+-a: All files mode, all files at the location specified by the -p flag will be renamed to the argument given in the -a flag, keeping their file extensions.  
 Example:
 
 ```
 $ D:\python\file_utilities> python deduplicator -p *path to folder* -a *what to rename everything to*
 ```
 
--s: Single mode, all copies of the file specified by the -s flag will be renamed, the new name can be entered at the prompt.
+-s: Single mode, all copies of the file specified by the -s flag will be renamed, the new name can be entered at the prompt.  
 Example:
 
 ```
@@ -41,23 +40,23 @@ Renamed X files
 
 Run from the command line with a file path as an argument,a format for the time stamp, and an additional flag to specify the mode.
 
--f: Set the format of the timestamp using strftime conventions
+-f: Set the format of the timestamp using strftime conventions.
 
--c: Time stamp the files with the creation time of each file
+-c: Time stamp the files with the creation time of each file.  
 Example:
 
 ```
 $ D:\python\file_utilities> python timestamper -p *path to folder* -f *format e.g. %Y/%m/%d* -c
 ```
 
--m: Time stamp the files with the modificaction time of each file
+-m: Time stamp the files with the modificaction time of each file.  
 Example:
 
 ```
 $ D:\python\file_utilities> python timestamper -p *path to folder* -f *format e.g. %Y/%m/%d* -m
 ```
 
-If you want to have spaces in your timestamp format rember to enclose the format argument in quotes
+If you want to have spaces in your timestamp format rember to enclose the format argument in quotes.  
 Example:
 
 ```
